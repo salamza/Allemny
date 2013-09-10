@@ -2,9 +2,9 @@
 include 'includes/overall/overallheader.php';
 
 $db_hostname = 'localhost';
-$db_database = 'allemny_database';
-$db_username = 'allemny_sub';
-$db_password = 'bAtKd}TGmFKK';
+$db_database = 'allemny';
+$db_username = 'root';
+$db_password = '';
 
 global $db_server; 
 $db_server = mysql_connect($db_hostname, $db_username, $db_password);
