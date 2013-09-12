@@ -6,6 +6,14 @@ $(document).ready(function(){
 				required: true,
 				email: true,
 				minlength: 2
+			},
+			year: {
+				required: true,
+				number: true				
+			},
+			mobile: {
+				required: true,
+				number: true	
 			}
 		}
 	});
@@ -82,8 +90,7 @@ $('#submail').blur(function() {
 				$(form).fadeOut(1000,function(){form.html('<div style="padding-left:450px;"><h3>Thank You.</h3></div>').fadeIn();});
 			}
 		});
-	});
-	
+	});	
 
 	$('#contactus').submit(function(e) {
 		e.preventDefault();

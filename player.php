@@ -1,22 +1,20 @@
 <?php 
 include 'includes/overall/overallheader.php';
 
-$db_hostname = 'localhost';
-$db_database = 'allemny';
-$db_username = 'root';
-$db_password = '';
+require_once 'core/db_configration/db_config.php';
 
 global $db_server; 
 $db_server = mysql_connect($db_hostname, $db_username, $db_password);
 if (!$db_server) {die("Unable to connect to MySQL: " . mysql_error());}
 mysql_select_db($db_database, $db_server) or die("Unable to select database: ".mysql_error());
+
 if(isset($_GET['id']) &&isset($_GET['vid'])){
 
 $playlistnum = $_GET['id'];
 $vidnum=$_GET['vid'];
 $sql = "SELECT * FROM `playlist` WHERE `id` = ".$playlistnum." LIMIT 0, 30 ";
 $rslt= mysql_query($sql,$db_server);
-if(mysql_numrows($rslt)!= 1){
+if(mysql_numrows($rslt)!= 1){ 
     die("Server Error" .mysql_error());
 }
 $title=mysql_result($rslt,0,"title");

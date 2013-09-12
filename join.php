@@ -23,7 +23,7 @@ include 'includes/overall/overallheader.php';?>
 	
 	<div class="container">
 	<div >
-		<form id="contactus" class="form-horizontal" method="post" action="#">
+		<form id="joinus" class="form-horizontal" method="post" action="core/functions/join-submit.php">
 			<legend>Register</legend>
 			
 			<div class="control-group">
@@ -57,7 +57,7 @@ include 'includes/overall/overallheader.php';?>
 				<label class="control-label">Academic Year</label>
 				<div class="controls">
 					<div class="input-prepend">
-						<input type="text" class="input-xlarge" id="year" name="year" placeholder="" required>
+						<input type="text" class="input-xlarge" id="year" name="year" placeholder="EX: 2015" required>
 					</div>
 				</div>
 			</div>	
@@ -75,38 +75,37 @@ include 'includes/overall/overallheader.php';?>
 				<label class="control-label">Mobile Number</label>
 				<div class="controls">
 					<div class="input-prepend">
-						<input type="email" class="input-xlarge" id="mobile" name="mobile" placeholder="" required>
+						<input type="text" class="input-xlarge" id="mobile" name="mobile" placeholder="" required>
 					</div>
 				</div>
 			</div>
 			
-<div class="control-group">
-<label class="control-label" for="prev_exp">Applying for</label>  
-    <div class="controls ">
-        <label class="checkbox">
-            <input type="checkbox" value="option1" id="inlineCheckbox1"> PR and FR committee.
-        </label>
-        <label class="checkbox">
-            <input type="checkbox" value="option2" id="inlineCheckbox2"> Marketing Committee.
-        </label>
-        <label class="checkbox">
-            <input type="checkbox" value="option3" id="inlineCheckbox3"> R&D Committee.
-        </label>
-        <label class="checkbox">
-            <input type="checkbox" value="option3" id="inlineCheckbox3"> Graphics Committee, Video Editing team.
-        </label>
-		<label class="checkbox">
-            <input type="checkbox" value="option3" id="inlineCheckbox3"> Graphics Committee, Design team.
-        </label>
-		<label class="checkbox">
-            <input type="checkbox" value="option2" id="inlineCheckbox2"> Web Committee
-        </label>
-		<label class="checkbox">
-            <input type="checkbox" value="option2" id="inlineCheckbox2"> HR Committee.
-        </label>
-    </div>
-</div>
-			
+				<div class="control-group">
+				<label class="control-label" for="prev_exp">Applying for</label>  
+				    <div class="controls ">
+				        <label class="checkbox">
+				            <input type="checkbox" name="option1" id="inlineCheckbox1"> PR and FR committee.
+				        </label>
+				        <label class="checkbox">
+				            <input type="checkbox" name="option2" id="inlineCheckbox2"> Marketing Committee.
+				        </label>
+				        <label class="checkbox">
+				            <input type="checkbox" name="option3" id="inlineCheckbox3"> R&D Committee.
+				        </label>
+				        <label class="checkbox">
+				            <input type="checkbox" name="option4" id="inlineCheckbox3"> Graphics Committee, Video Editing team.
+				        </label>
+						<label class="checkbox">
+				            <input type="checkbox" name="option5" id="inlineCheckbox3"> Graphics Committee, Design team.
+				        </label>
+						<label class="checkbox">
+				            <input type="checkbox" name="option6" id="inlineCheckbox2"> Web Committee.
+				        </label>
+						<label class="checkbox">
+				            <input type="checkbox" name="option7" id="inlineCheckbox2"> HR Committee.
+				        </label>
+				    </div>
+				</div>
 			
 			<div class="control-group">  
                 <label class="control-label" for="prev_exp" >State your previous volunteering experience ?</label>
@@ -135,12 +134,13 @@ include 'includes/overall/overallheader.php';?>
                     <textarea name="suggestion" id="suggestion" rows="8" class="span5" placeholder="" ></textarea>  
                 </div>  
             </div>
-			
+           
             <div class="form-actions"> 
                 <input type="hidden" name="send" value="contact">
                 <button type="submit" class="btn btn-success">Send</button>  
             </div>
 			
+
 		</form>
 	</div>
 </div>
