@@ -1,24 +1,6 @@
 $(document).ready(function(){
-	/* ---- Using Modernizr to check if the "required" and "placeholder" attributes are supported ---- */
-	$("#joinus").validate({
-		rules: {
-			email: {
-				required: true,
-				email: true,
-				minlength: 2
-			},
-			year: {
-				required: true,
-				number: true				
-			},
-			mobile: {
-				required: true,
-				number: true	
-			}
-		}
-	});
-	
-	
+	/* ---- Using Modernizr to check if the "required" and "placeholder" attributes are supported ---- */			
+
 		$('#mailform').submit(function(e){
 		var x=$('#submail').val(); 
 		var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -27,7 +9,6 @@ $(document).ready(function(){
 			$('#submail').focus();
 			return false;
 		}
-
 		$("#mailform").validate({
 		rules: {
 			email: {
@@ -78,6 +59,24 @@ $('#submail').blur(function() {
 	});
 
 	$('#joinus').submit(function(e) {
+		$("#joinus").validate({
+		rules: {
+			year: {
+				required: true ,
+				number: true
+			},
+			email: {
+				required: true,
+				email: true,
+				minlength: 2
+			},			
+			mobile: {
+				required: true,
+				number: true,
+				minlength: 10
+			}
+		}
+	});
 		e.preventDefault();
 		var form = $(this);
 		var post_url = form.attr('action');
@@ -86,8 +85,12 @@ $('#submail').blur(function() {
 			type:'POST',
 			url:post_url,
 			data:post_data,
-			success:function(){
-				$(form).fadeOut(1000,function(){form.html('<div style="padding-left:450px;"><h3>Thank You.</h3></div>').fadeIn();});
+			dataType:"json",
+			success: function (response) {
+			   if(response.status == "error")
+			   		alert(response.message);
+			   	else if (response.status == "success")
+					$(form).fadeOut(1000,function(){form.html('<div style="padding-left:450px;"><h3>Thank You.</h3></div>').fadeIn();});				
 			}
 		});
 	});	

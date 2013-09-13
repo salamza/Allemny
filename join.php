@@ -134,13 +134,15 @@ include 'includes/overall/overallheader.php';?>
                     <textarea name="suggestion" id="suggestion" rows="8" class="span5" placeholder="" ></textarea>  
                 </div>  
             </div>
-           
+
+            	<img class = "controls" src="captcha/captcha.php"> Write these numbers <br>
+            	<input class = "controls" type="text" name="vercode" /> 
+
             <div class="form-actions"> 
                 <input type="hidden" name="send" value="contact">
                 <button type="submit" class="btn btn-success">Send</button>  
             </div>
 			
-
 		</form>
 	</div>
 </div>
