@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.11.1
+-- version 3.3.9
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 07, 2013 at 01:57 PM
--- Server version: 5.5.23
--- PHP Version: 5.2.17
+-- Generation Time: Sep 16, 2013 at 12:18 AM
+-- Server version: 5.5.8
+-- PHP Version: 5.3.5
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -17,8 +16,67 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `allemny_database`
+-- Database: `allemny`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `applying_for`
+--
+
+CREATE TABLE IF NOT EXISTS `applying_for` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `candidate_id` int(11) NOT NULL,
+  `option_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=115 ;
+
+--
+-- Dumping data for table `applying_for`
+--
+
+INSERT INTO `applying_for` (`id`, `candidate_id`, `option_id`) VALUES
+(111, 88, 10),
+(112, 89, 4),
+(113, 90, 3),
+(114, 90, 7);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `candidates`
+--
+
+CREATE TABLE IF NOT EXISTS `candidates` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `faculty` varchar(50) NOT NULL,
+  `department` varchar(50) NOT NULL,
+  `academic_year` varchar(11) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `mob_number` varchar(11) NOT NULL,
+  `prev_exp` text NOT NULL,
+  `skills` text NOT NULL,
+  `facebook` tinyint(1) NOT NULL,
+  `Allemny_Website` tinyint(1) NOT NULL,
+  `twitter` tinyint(1) NOT NULL,
+  `friend` tinyint(1) NOT NULL,
+  `other` varchar(50) NOT NULL,
+  `join_reason` text NOT NULL,
+  `suggest` text NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`,`mob_number`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=91 ;
+
+--
+-- Dumping data for table `candidates`
+--
+
+INSERT INTO `candidates` (`id`, `name`, `faculty`, `department`, `academic_year`, `email`, `mob_number`, `prev_exp`, `skills`, `facebook`, `Allemny_Website`, `twitter`, `friend`, `other`, `join_reason`, `suggest`) VALUES
+(88, 'Mohamed Saleh Mostafa', 'Alex', 'Preparatory', 'Preparatory', 'm_saleh_20050@yahoo.com', 'fak', 'g', 'h', 0, 0, 0, 1, '', 'b', 'b'),
+(89, 'Mohamed Saleh Mostafa', 'Alex', 'Electrical', 'Second', 'm_saleh_20050@yahoo.com', 'kfg', 'v ', 'c', 1, 0, 0, 0, 'Mohamed', 'j', 'j'),
+(90, 'Mohamed Saleh Mostafa', 'Alex', 'Preparatory', 'Preparatory', 'm_saleh_20050@yahoo.com', '0120', 'g', 'g', 0, 0, 0, 0, '', 'b', 'b');
 
 -- --------------------------------------------------------
 
@@ -91,6 +149,34 @@ INSERT INTO `newsletters` (`mail_id`, `email`) VALUES
 (58, 'Eng.islamsh@yahoo.com'),
 (59, 'samy_sayed42@yahoo.com'),
 (60, 'engmelnaggar@live.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `option`
+--
+
+CREATE TABLE IF NOT EXISTS `option` (
+  `option_id` int(11) NOT NULL AUTO_INCREMENT,
+  `option_name` varchar(50) NOT NULL,
+  PRIMARY KEY (`option_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+
+--
+-- Dumping data for table `option`
+--
+
+INSERT INTO `option` (`option_id`, `option_name`) VALUES
+(1, 'PR and FR committee.'),
+(2, 'Marketing Committee.'),
+(3, 'R&D Committee.'),
+(4, 'Graphics Committee, "Video Editing"'),
+(5, 'Graphics Committee, "Design"'),
+(6, 'Graphics Committee, "Videography and Photography"'),
+(7, 'HR Committee.'),
+(8, 'Academic Committee'),
+(9, 'Web Committee, "Developers and Designers"'),
+(10, 'Web Committee, "Editors"');
 
 -- --------------------------------------------------------
 
@@ -213,7 +299,3 @@ INSERT INTO `videos` (`num`, `yt_id`, `title`, `thumbnail`, `description`, `yt_u
 --
 ALTER TABLE `videos`
   ADD CONSTRAINT `FK_videos_playlist` FOREIGN KEY (`playlist_id`) REFERENCES `playlist` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
