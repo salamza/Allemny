@@ -60,11 +60,7 @@ $('#submail').blur(function() {
 
 	$('#joinus').submit(function(e) {
 		$("#joinus").validate({
-		rules: {
-			year: {
-				required: true ,
-				number: true
-			},
+		rules: {			
 			email: {
 				required: true,
 				email: true,
