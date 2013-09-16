@@ -1,6 +1,6 @@
 <?
 
-require 'C:\MyData\PHP\Allemny\core\db_configration\db_config.php';
+require '../core/db_configration/db_config.php';
 
 session_start(); 
 

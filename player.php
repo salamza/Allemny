@@ -1,23 +1,24 @@
 <?php 
 include 'includes/overall/overallheader.php';
+require_once 'core/db_configuration/db_config.php';
 
-require_once 'core/db_configration/db_config.php';
+global $db_server;
+$db_server=@mysqli_connect (db_hostname,db_username,db_password,db_database) OR die ('Could not connect to MySQL: '.mysqli_connect_error());
 
-global $db_server; 
-$db_server = mysql_connect($db_hostname, $db_username, $db_password);
-if (!$db_server) {die("Unable to connect to MySQL: " . mysql_error());}
-mysql_select_db($db_database, $db_server) or die("Unable to select database: ".mysql_error());
 
 if(isset($_GET['id']) &&isset($_GET['vid'])){
-
-$playlistnum = $_GET['id'];
-$vidnum=$_GET['vid'];
+$playlistnum = mysqli_real_escape_string($db_server, $_GET['id']);
+$vidnum = mysqli_real_escape_string($db_server, $_GET['vid']);
 $sql = "SELECT * FROM `playlist` WHERE `id` = ".$playlistnum." LIMIT 0, 30 ";
-$rslt= mysql_query($sql,$db_server);
-if(mysql_numrows($rslt)!= 1){ 
+
+$rslt= mysqli_query($db_server,$sql);
+
+if(mysqli_num_rows($rslt)!= 1){ 
     die("Server Error" .mysql_error());
 }
-$title=mysql_result($rslt,0,"title");
+$row=mysqli_fetch_array($rslt,  MYSQLI_ASSOC);
+// $title=mysql_result($rslt,0,"title");
+$title=$row['title'];
 }
 ?>
 
@@ -32,15 +33,13 @@ $title=mysql_result($rslt,0,"title");
                 <li class="nav-header"><?php echo "$title";?></li>
                 <?php
                 $sql = "SELECT * FROM `videos` WHERE `playlist_id` =".$playlistnum." ORDER BY `num` ASC LIMIT 0 , 30";
-                $rslt= mysql_query($sql);
-                $num=mysql_numrows($rslt);
-                $i=0;
-                while ($i < $num) {
-                    $k=$i+1;
-                    $lesson_title= mysql_result($rslt,$i,"title");
-
-                    echo "<li><a href=\""."player.php?id=".$playlistnum."&vid=".$k."\">".$lesson_title."</a></li>";
-                    $i++;
+                $rslt= mysqli_query($db_server,$sql);
+                $num=mysqli_num_rows($rslt);
+                $k=1;
+                while($row=mysqli_fetch_array($rslt,MYSQLI_ASSOC)){
+                    $lesson_title = $row['title'];
+                    echo "<li><a href=\""."player?id=".$playlistnum."&vid=".$k."\">".$lesson_title."</a></li>";
+                    $k++;
                 }
                 ?>
               </ul>
@@ -50,9 +49,10 @@ $title=mysql_result($rslt,0,"title");
 			<div class="row-fluid">
 				<div class="row-fluid">
                     <?php
-                    $sql2 = "SELECT `yt_id` FROM `videos` WHERE `num` = ".$vidnum." AND `playlist_id` = ".$playlistnum." LIMIT 0, 30 ";
-                    $rslt2= mysql_query($sql2)or die("Error".mysql_error());;
-                    $lesson_key=mysql_result($rslt2,0,"yt_id");
+                    $sql2 = "SELECT `yt_id` FROM `videos` WHERE `num` = ".$vidnum." AND `playlist_id` = ".$playlistnum." LIMIT 0, 1 ";
+                    $rslt2= mysqli_query($db_server,$sql2);
+                    $row2=mysqli_fetch_array($rslt2,MYSQLI_ASSOC);
+                    $lesson_key=$row2['yt_id'];
                     echo '<iframe width="730" height="450" src="http://www.youtube.com/embed/'.$lesson_key.'?rel=0" frameborder="0" allowfullscreen></iframe>';
                     ?>
 
@@ -84,6 +84,6 @@ $title=mysql_result($rslt,0,"title");
 		</div>
 	</div>
 </div>
-<?php mysql_close($db_server);?>
+<?php mysqli_close($db_server);?>
 <?php 
 include 'includes/overall/overallfooter.php';?>

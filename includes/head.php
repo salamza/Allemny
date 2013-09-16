@@ -19,4 +19,7 @@
 });
     </script>
     <link rel="stylesheet" type="text/css" href="css/style-main.css">
+    <?php
+    error_reporting(0);
+    ?>
 </head>

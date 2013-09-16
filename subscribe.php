@@ -1,30 +1,23 @@
-<?php
-$db_hostname = 'localhost';
-$db_database = 'allemny_database';
-$db_username = 'allemny_sub';
-$db_password = 'bAtKd}TGmFKK';
-global $db_server; 
-$db_server = mysql_connect($db_hostname, $db_username, $db_password);
-if (!$db_server) {die("Unable to connect to MySQL: " . mysql_error());}
-mysql_select_db($db_database, $db_server) or die("Unable to select database: ".mysql_error());
+<?php  include 'includes/overall/overallheader.php';?>
 
-if (isset($_POST['submail'])){
-	$email= $_POST['submail'];
-	$tbl_name="newsletters";
-    $email = mysql_real_escape_string($email); // make sure it OK
-    $sql = "SELECT * FROM `newsletters` WHERE email = '{$email}' LIMIT 1"; // select all subsribers that has the email and only return (if there is) one
-    $qry = mysql_query($sql,$db_server); // run the query
-    if( mysql_num_rows($qry) != 0){ // if that user was found they are not new so return false
-        return false;
-    }else{ 
-        $sql = 'insert into '.$tbl_name.'(email) values("' . $email . '")';      
-        if (!mysql_query($sql, $db_server)){
-            echo "INSERT failed: $sql<br />" .mysql_error() . "<br /><br />";
-        }
-        else{
-            echo "success";
-            }
-    }
-}
-mysql_close($db_server);
-?>
+<div id="container">
+    <div class="well" style="margin-top:20px;">
+        <div class="row-fluid" >
+            <h4 style="padding-left:100px;font-family:sans-serif;">Subscribe to Allemny Newsletter and receive news about our new courses, videos and more.</h4>
+        </div>
+        <div class="row-fluid">
+            <form id="mailform2"  action="core/functions/subscription-submit.php" method="post" name="mailform2">
+                <div style="padding-left:135px;height:70px;">
+                    <input type="text" name="submail" id="submail" style="width:700px;"  class="input-small" required >
+                    <p class="errorMsg" style="font-family: Arial, Helvetica, sans-serif;font-size: 13px;color: #cc0000;
+                    width: 250px;">Please Enter a Valid Email Address.</p>
+                </div>
+                <div style="padding-left:400px;">
+                    <button type="submit" style="width:200px;" class="btn btn-success btn-large">Subscribe</button>
+                </div>
+            </form>
+        </div>
+ 
+</div>
+
+<?php  include 'includes/overall/overallfooter.php';?>

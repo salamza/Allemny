@@ -71,7 +71,7 @@ include 'includes/overall/overallheader.php';?>
 </div>
 </div>
 <div class="row-fluid">
-                <form id="mailform"  action="subscribe.php" method="post" name="mailform">
+                <form id="mailform"  action="core/functions/subscription-submit.php" method="post" name="mailform">
                 <input type="text" name="submail" id="submail" style="width:900px;"  class="input-small" placeholder="Subscribe for News and other Awesome updates!">
                 <button type="submit" style="width:150px;float:right;" class="btn btn-success ">Subscribe</button>
             </form>

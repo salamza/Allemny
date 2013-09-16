@@ -72,7 +72,7 @@ include 'includes/overall/overallheader.php';?>
 			<div class="row-fluid">
 			<div class="well well-small" style="margin:40px 0px 0px 40px;">
 			<div class="media"  >
-				<a class="pull-left" href="player.php?id=<?php echo '6&vid=1';?>">
+				<a class="pull-left" href="player?id=<?php echo '6&vid=1';?>">
 					<img class="media-object" src="img/courses/ADI.png">
 				</a>
 				<div class="media-body">
@@ -97,7 +97,7 @@ include 'includes/overall/overallheader.php';?>
 		<div class="row-fluid">
 			<div class="well well-small" style="margin:40px 0px 0px 40px;">
 			<div class="media"  >
-				<a class="pull-left" href="player.php?id=<?php echo '5&vid=1';?>">
+				<a class="pull-left" href="player?id=<?php echo '5&vid=1';?>">
 					<img class="media-object" src="img/courses/matlab.png">
 				</a>
 				<div class="media-body">
@@ -119,7 +119,7 @@ include 'includes/overall/overallheader.php';?>
 			<div class="row-fluid">
 			<div class="well well-small" style="margin:40px 0px 0px 40px;">
 			<div class="media"  >
-				<a class="pull-left" href="player.php?id=<?php echo '1&vid=1';?>">
+				<a class="pull-left" href="player?id=<?php echo '1&vid=1';?>">
 					<img class="media-object" src="img/courses/pcb_design.png">
 				</a>
 				<div class="media-body">
@@ -139,7 +139,7 @@ include 'includes/overall/overallheader.php';?>
 		<div class="row-fluid">
 			<div class="well well-small" style="margin:40px 0px 0px 40px;">
 			<div class="media"  >
-				<a class="pull-left" href="player.php?id=<?php echo '4&vid=1';?>">
+				<a class="pull-left" href="player?id=<?php echo '4&vid=1';?>">
 					<img class="media-object" src="img/courses/physics.png">
 				</a>
 				<div class="media-body">
@@ -157,7 +157,7 @@ include 'includes/overall/overallheader.php';?>
 			<div class="row-fluid">
 			<div class="well well-small" style="margin:40px 0px 0px 40px;">
 			<div class="media"  >
-				<a class="pull-left" href="player.php?id=<?php echo '2&vid=1';?>">
+				<a class="pull-left" href="player?id=<?php echo '2&vid=1';?>">
 					<img class="media-object" src="img/courses/geometry.png">
 				</a>
 				<div class="media-body">

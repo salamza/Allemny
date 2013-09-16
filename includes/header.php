@@ -16,10 +16,10 @@
                           </a>
                           <div class="nav-collapse">
                               <ul class="nav">
-                                <li><a href="courses.php">Courses</a></li>
-                                <li><a href="about.php">About</a></li>
-                                <li><a href="contact.php">Contact</a></li>
-                                <li><a href="join.php">join&nbsp;us</a></li>
+                                <li><a href="courses">Courses</a></li>
+                                <li><a href="about">About</a></li>
+                                <li><a href="contact">Contact</a></li>
+                                <li><a href="join">join&nbsp;us</a></li>
                             </ul>
                         </div>
                     </div>
