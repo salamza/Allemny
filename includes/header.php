@@ -2,7 +2,7 @@
             <div class="container"> 
                 <div class="row-fluid">
                     <div class="span4">
-                     <a href="index.php"><img src="img/logo.png" alt="Logo"></a>
+                     <a href="index"><img src="img/logo.png" alt="Logo"></a>
                   </div>
                   <div class="span6 offset2">
                     <div style="width:400px; padding-top:55px; padding-left:41px">
