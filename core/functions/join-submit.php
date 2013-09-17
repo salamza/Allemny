@@ -1,6 +1,9 @@
-<?
-
-require '../core/db_configration/db_config.php';
+<?php
+DEFINE ('db_hostname', 'localhost');
+DEFINE ('db_database','allemny');
+DEFINE ('db_username','root');
+DEFINE ('db_password','');
+// require '/core/db_configuration/db_config.php';
 
 session_start(); 
 
@@ -13,7 +16,6 @@ if (empty($_POST) === false)
 			    'status' => 'error',
 			    'message'=> 'Error in Captcha' ));
 	}
-
 	else
 	{
 		// Ensure user select at least one from apllying for
@@ -34,54 +36,52 @@ if (empty($_POST) === false)
 		}
 		else
 		{
-			$name = $_POST['name'];
-			$univ = $_POST['univ'];
-			$dept =  $_POST['dept'];
+			$name = mysql_real_escape_string(htmlspecialchars(htmlentities(strip_tags($_POST['name']))));
+			$univ = mysql_real_escape_string(htmlspecialchars(htmlentities(strip_tags($_POST['univ']))));
+			$dept = $_POST['dept'];
 			$year = $_POST['year'];
-			$email = $_POST['email'];
-			$mobile = $_POST['mobile'];
-			$prev_exp = $_POST['prev_exp'];
-			$skills = $_POST['skills'];
+			$email = mysql_real_escape_string(htmlspecialchars(htmlentities(strip_tags($_POST['email']))));
+			$mobile = mysql_real_escape_string(htmlspecialchars(htmlentities(strip_tags($_POST['mobile']))));
+			$prev_exp = mysql_real_escape_string(htmlspecialchars(htmlentities(strip_tags($_POST['prev_exp']))));
+			$skills = mysql_real_escape_string(htmlspecialchars(htmlentities(strip_tags($_POST['skills']))));
 			$facebook = isset($_POST['op1_how_know'])?true : false ;
 			$allemny_website = isset($_POST['op2_how_know'])?true : false ;
 			$twitter = isset($_POST['op3_how_know'])?true : false ;
 			$friend = isset($_POST['op4_how_know'])?true : false ;
-			$other = $_POST['other'];
-			$join_reason = $_POST['join_reason'];
-			$suggestion = $_POST['suggestion'];
+			$other = mysql_real_escape_string(htmlspecialchars(htmlentities(strip_tags($_POST['other']))));
+			$join_reason = mysql_real_escape_string(htmlspecialchars(htmlentities(strip_tags($_POST['join_reason']))));
+			$suggestion = mysql_real_escape_string(htmlspecialchars(htmlentities(strip_tags($_POST['suggestion']))));
 
-
-			$db_server = mysql_connect($db_hostname, $db_username, $db_password);
-			if (!$db_server) {die("Unable to connect to MySQL: " . mysql_error());}
-			mysql_select_db($db_database, $db_server) or die("Unable to select database: ".mysql_error());
-
-			$qry = mysql_query("INSERT INTO candidates(name,faculty,department,academic_year,email,mob_number,prev_exp,skills,facebook,Allemny_Website,twitter,friend,other,join_reason,suggest) VALUES ('$name','$univ','$dept','$year','$email','$mobile','$prev_exp','$skills','$facebook','$allemny_website','$twitter','$friend','$other','$join_reason','$suggestion')");
-
-			$candidate_id = mysql_insert_id();
+			$db_server = mysqli_connect(db_hostname, db_username, db_password);
+			if (!$db_server) {die("Unable to connect to MySQL: " . mysqli_connect_error());}
+			
+			mysqli_select_db($db_server,db_database) or die("Unable to select database. ".mysqli_connect_error());
+			
+			$qry = mysqli_query($db_server,"INSERT INTO `candidates` (`name`,`faculty`,`department`,`academic_year`,`email`,`mob_number`,`prev_exp`,`skills`,`facebook`,`Allemny_Website`,`twitter`,`friend`,`other`,`join_reason`,`suggest`) VALUES ('$name','$univ','$dept','$year','$email','$mobile','$prev_exp','$skills','$facebook','$allemny_website','$twitter','$friend','$other','$join_reason','$suggestion')");
+			$candidate_id = mysqli_insert_id($db_server);			
 
 			if (isset($_POST['option1']))		
-				$qry = mysql_query("INSERT INTO applying_for (candidate_id,option_id) VALUES ('$candidate_id' , 1)");	
+				$qry = mysqli_query($db_server,"INSERT INTO `applying_for` (`candidate_id`,`option_id`) VALUES ('$candidate_id' , 1)");	
 			if (isset($_POST['option2']))	
-				$qry = mysql_query("INSERT INTO applying_for (candidate_id,option_id) VALUES ('$candidate_id' , 2)");
+				$qry = mysqli_query($db_server,"INSERT INTO `applying_for` (`candidate_id`,`option_id`) VALUES ('$candidate_id' , 2)");
 			if (isset($_POST['option3']))	
-				$qry = mysql_query("INSERT INTO applying_for (candidate_id,option_id) VALUES ('$candidate_id' , 3)");
+				$qry = mysqli_query($db_server,"INSERT INTO `applying_for` (`candidate_id`,`option_id`) VALUES ('$candidate_id' , 3)");
 			if (isset($_POST['option4']))	
-				$qry = mysql_query("INSERT INTO applying_for (candidate_id,option_id) VALUES ('$candidate_id' , 4)");
+				$qry = mysqli_query($db_server,"INSERT INTO `applying_for` (`candidate_id`,`option_id`) VALUES ('$candidate_id' , 4)");
 			if (isset($_POST['option5']))	
-				$qry = mysql_query("INSERT INTO applying_for (candidate_id,option_id) VALUES ('$candidate_id' , 5)");
+				$qry = mysqli_query($db_server,"INSERT INTO `applying_for` (`candidate_id`,`option_id`) VALUES ('$candidate_id' , 5)");
 			if (isset($_POST['option6']))	
-				$qry = mysql_query("INSERT INTO applying_for (candidate_id,option_id) VALUES ('$candidate_id' , 6)");
+				$qry = mysqli_query($db_server,"INSERT INTO `applying_for` (`candidate_id`,`option_id`) VALUES ('$candidate_id' , 6)");
 			if (isset($_POST['option7']))	
-				$qry = mysql_query("INSERT INTO applying_for (candidate_id,option_id) VALUES ('$candidate_id' , 7)");
+				$qry = mysqli_query($db_server,"INSERT INTO `applying_for` (`candidate_id`,`option_id`) VALUES ('$candidate_id' , 7)");
 			if (isset($_POST['option8']))	
-				$qry = mysql_query("INSERT INTO applying_for (candidate_id,option_id) VALUES ('$candidate_id' , 8)");
+				$qry = mysqli_query($db_server,"INSERT INTO `applying_for` (`candidate_id`,`option_id`) VALUES ('$candidate_id' , 8)");
 			if (isset($_POST['option9']))	
-				$qry = mysql_query("INSERT INTO applying_for (candidate_id,option_id) VALUES ('$candidate_id' , 9)");
+				$qry = mysqli_query($db_server,"INSERT INTO `applying_for` (`candidate_id`,`option_id`) VALUES ('$candidate_id' , 9)");
 			if (isset($_POST['option10']))	
-				$qry = mysql_query("INSERT INTO applying_for (candidate_id,option_id) VALUES ('$candidate_id' , 10)");
+				$qry = mysqli_query($db_server,"INSERT INTO `applying_for` (`candidate_id`,`option_id`) VALUES ('$candidate_id' , 10)");
 
-
-			mysql_close($db_server);
+			mysqli_close($db_server);
 			echo json_encode(array(
 		    'status' => 'success' ));		    
 	}
