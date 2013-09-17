@@ -4,6 +4,7 @@ include 'includes/overall/overallheader.php';?>
 
 <div class="container">
 	<div class="well">
+		<h3 style="padding-left:370px;width:250px;">Allemny Committees</h3>
 		<p>
 			<strong>1) </strong>
 			<strong><u>HR Committee:</u></strong>
