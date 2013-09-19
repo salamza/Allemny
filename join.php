@@ -22,6 +22,6 @@ include 'includes/overall/overallheader.php';?>
         </div>
     
 <?php 
-    require 'join_form.php';
+    include 'includes/joinForm.php';
     include 'includes/overall/overallfooter.php';
     ?>

@@ -18,39 +18,39 @@ if (empty($_POST) === false)
 	}
 	else
 	{
-		// Ensure user select at least one from apllying for
+		// Ensure user select at least one from applying for.
 	if (!isset($_POST['option1']) &&!isset($_POST['option2']) &&!isset($_POST['option3'])&&!isset($_POST['option4']) 
 		&&!isset($_POST['option5']) &&!isset($_POST['option6']) &&!isset($_POST['option7'])&&!isset($_POST['option8'])
 		&&!isset($_POST['option9'])&&!isset($_POST['option10']))
 		{
 			echo json_encode(array(
 		    'status' => 'error',
-		    'message'=> 'You must select at least one position' ));
+		    'message'=> 'Please Select a Committee' ));
 		}
 		else if (!isset($_POST['op1_how_know']) &&!isset($_POST['op2_how_know'])
 			&&!isset($_POST['op3_how_know'])&&!isset($_POST['op4_how_know'])&&!isset($_POST['op5_how_know']))
 		{
 			echo json_encode(array(
 		    'status' => 'error',
-		    'message'=> 'You must select how did you know about Allemny' ));	
+		    'message'=> 'How did you know about Allemny' ));	
 		}
 		else
 		{
-			$name = mysql_real_escape_string(htmlspecialchars(htmlentities(strip_tags($_POST['name']))));
-			$univ = mysql_real_escape_string(htmlspecialchars(htmlentities(strip_tags($_POST['univ']))));
+			$name = mysql_real_escape_string(htmlentities(strip_tags($_POST['name'])));
+			$univ = mysql_real_escape_string(htmlentities(strip_tags($_POST['univ'])));
 			$dept = $_POST['dept'];
 			$year = $_POST['year'];
-			$email = mysql_real_escape_string(htmlspecialchars(htmlentities(strip_tags($_POST['email']))));
-			$mobile = mysql_real_escape_string(htmlspecialchars(htmlentities(strip_tags($_POST['mobile']))));
-			$prev_exp = mysql_real_escape_string(htmlspecialchars(htmlentities(strip_tags($_POST['prev_exp']))));
-			$skills = mysql_real_escape_string(htmlspecialchars(htmlentities(strip_tags($_POST['skills']))));
+			$email = mysql_real_escape_string(htmlentities(strip_tags($_POST['email'])));
+			$mobile = mysql_real_escape_string(htmlentities(strip_tags($_POST['mobile'])));
+			$prev_exp = mysql_real_escape_string(htmlentities(strip_tags($_POST['prev_exp'])));
+			$skills = mysql_real_escape_string(htmlentities(strip_tags($_POST['skills'])));
 			$facebook = isset($_POST['op1_how_know'])?true : false ;
 			$allemny_website = isset($_POST['op2_how_know'])?true : false ;
 			$twitter = isset($_POST['op3_how_know'])?true : false ;
 			$friend = isset($_POST['op4_how_know'])?true : false ;
-			$other = mysql_real_escape_string(htmlspecialchars(htmlentities(strip_tags($_POST['other']))));
-			$join_reason = mysql_real_escape_string(htmlspecialchars(htmlentities(strip_tags($_POST['join_reason']))));
-			$suggestion = mysql_real_escape_string(htmlspecialchars(htmlentities(strip_tags($_POST['suggestion']))));
+			$other = mysql_real_escape_string(htmlentities(strip_tags($_POST['other'])));
+			$join_reason = mysql_real_escape_string(htmlentities(strip_tags($_POST['join_reason'])));
+			$suggestion = mysql_real_escape_string(htmlentities(strip_tags($_POST['suggestion'])));
 
 			$db_server = mysqli_connect(db_hostname, db_username, db_password);
 			if (!$db_server) {die("Unable to connect to MySQL: " . mysqli_connect_error());}

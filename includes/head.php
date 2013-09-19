@@ -5,12 +5,17 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="css/style-menu.css">
     <link rel='stylesheet' type='text/css' href='css/fullcalendar.css' />
+
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+    <script src="js/jqBootstrapValidation.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/modernizr.custom.js"></script>
     <script src="js/subscript.js"></script>
     <script type='text/javascript' src='js/fullcalendar.min.js'></script>
+    <script>
+    $(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
+    </script>
     <script type="text/javascript">
     $(document).ready(function() {
     $('#calendar').fullCalendar({

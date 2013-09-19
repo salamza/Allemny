@@ -7,7 +7,7 @@
 				<label class="control-label">Full Name</label>
 				<div class="controls">
 					<div class="input-prepend">
-						<input type="text" class="input-xlarge" id="name" name="name" placeholder="" required>
+						<input type="text" class="span4" id="name" name="name" placeholder="" required>
 					</div>
 				</div>
 			</div>
@@ -16,7 +16,7 @@
 				<label class="control-label">University/ Faculty</label>
 				<div class="controls">
 					<div class="input-prepend">
-						<input type="text" class="input-xlarge" id="univ" name="univ" placeholder="Ex: Alex University, Faculty of Engineering" required>
+						<input type="text" class="span4" id="univ" name="univ" placeholder="Ex: Alex University, Faculty of Engineering" required>
 					</div>
 				</div>
 			</div>
@@ -25,7 +25,7 @@
 				<label class="control-label">Department</label>
 				<div class="controls">
 					<div class="input-prepend">
-						<select class="input-xlarge" name="dept">
+						<select class="span4" name="dept">
 							<option value = "Preparatory"> Preparatory </option>
 							<option value = "Electrical"> Electrical </option>
 							<option value = "Mechanical"> Mechanical </option>
@@ -50,7 +50,7 @@
 				<label class="control-label">Academic Year</label>
 				<div class="controls">
 					<div class="input-prepend">
-						<select name="year" class = "input-xlarge">
+						<select name="year" class = "span4">
 							<option value="Preparatory">Preparatory</option>
 							<option value="First">First</option>
 							<option value="Second">Second</option>
@@ -65,7 +65,7 @@
 				<label class="control-label">Email</label>
 				<div class="controls">
 					<div class="input-prepend">
-						<input type="email" class="input-xlarge" id="email" name="email" placeholder="" required>
+						<input type="email" class="span4" id="email" name="email" placeholder="" required>
 					</div>
 				</div>
 			</div>
@@ -74,7 +74,7 @@
 				<label class="control-label">Mobile Number</label>
 				<div class="controls">
 					<div class="input-prepend">
-						<input type="text" class="input-xlarge" id="mobile" name="mobile" placeholder="" required>
+						<input type="text" class="span4" id="mobile" name="mobile" placeholder="" required>
 					</div>
 				</div>
 			</div>

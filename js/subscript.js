@@ -97,6 +97,7 @@ $(document).ready(function(){
 		});
 	});
 
+//
 	$('#joinus').submit(function(e) {
 		$("#joinus").validate({
 			rules: {			
@@ -108,7 +109,7 @@ $(document).ready(function(){
 				mobile: {
 					required: true,
 					number: true,
-					minlength: 10
+					minlength: 10,
 				}
 			}
 		});
