@@ -18,73 +18,40 @@ if (empty($_POST) === false)
 	}
 	else
 	{
-		// Ensure user select at least one from applying for.
-	if (!isset($_POST['option1']) &&!isset($_POST['option2']) &&!isset($_POST['option3'])&&!isset($_POST['option4']) 
-		&&!isset($_POST['option5']) &&!isset($_POST['option6']) &&!isset($_POST['option7'])&&!isset($_POST['option8'])
-		&&!isset($_POST['option9'])&&!isset($_POST['option10']))
-		{
-			echo json_encode(array(
-		    'status' => 'error',
-		    'message'=> 'Please Select a Committee' ));
-		}
-		else if (!isset($_POST['op1_how_know']) &&!isset($_POST['op2_how_know'])
-			&&!isset($_POST['op3_how_know'])&&!isset($_POST['op4_how_know'])&&!isset($_POST['op5_how_know']))
-		{
-			echo json_encode(array(
-		    'status' => 'error',
-		    'message'=> 'How did you know about Allemny' ));	
-		}
-		else
-		{
-			$name = mysql_real_escape_string(htmlentities(strip_tags($_POST['name'])));
-			$univ = mysql_real_escape_string(htmlentities(strip_tags($_POST['univ'])));
-			$dept = $_POST['dept'];
-			$year = $_POST['year'];
-			$email = mysql_real_escape_string(htmlentities(strip_tags($_POST['email'])));
-			$mobile = mysql_real_escape_string(htmlentities(strip_tags($_POST['mobile'])));
-			$prev_exp = mysql_real_escape_string(htmlentities(strip_tags($_POST['prev_exp'])));
-			$skills = mysql_real_escape_string(htmlentities(strip_tags($_POST['skills'])));
-			$facebook = isset($_POST['op1_how_know'])?true : false ;
-			$allemny_website = isset($_POST['op2_how_know'])?true : false ;
-			$twitter = isset($_POST['op3_how_know'])?true : false ;
-			$friend = isset($_POST['op4_how_know'])?true : false ;
-			$other = mysql_real_escape_string(htmlentities(strip_tags($_POST['other'])));
-			$join_reason = mysql_real_escape_string(htmlentities(strip_tags($_POST['join_reason'])));
-			$suggestion = mysql_real_escape_string(htmlentities(strip_tags($_POST['suggestion'])));
+		$db_server=@mysqli_connect (db_hostname,db_username,db_password,db_database) OR die ('Could not connect to MySQL: '.mysqli_connect_error());
 
-			$db_server = mysqli_connect(db_hostname, db_username, db_password);
-			if (!$db_server) {die("Unable to connect to MySQL: " . mysqli_connect_error());}
-			
-			mysqli_select_db($db_server,db_database) or die("Unable to select database. ".mysqli_connect_error());
-			
-			$qry = mysqli_query($db_server,"INSERT INTO `candidates` (`name`,`faculty`,`department`,`academic_year`,`email`,`mob_number`,`prev_exp`,`skills`,`facebook`,`Allemny_Website`,`twitter`,`friend`,`other`,`join_reason`,`suggest`) VALUES ('$name','$univ','$dept','$year','$email','$mobile','$prev_exp','$skills','$facebook','$allemny_website','$twitter','$friend','$other','$join_reason','$suggestion')");
-			$candidate_id = mysqli_insert_id($db_server);			
+		$name = mysqli_real_escape_string($db_server,htmlentities(strip_tags($_POST['name'])));
+		$univ = mysqli_real_escape_string($db_server,htmlentities(strip_tags($_POST['univ'])));
+		$dept = $_POST['dept'];
+		$year = $_POST['year'];
+		$email = mysqli_real_escape_string($db_server,htmlentities(strip_tags($_POST['email'])));
+		$mobile = mysqli_real_escape_string($db_server,htmlentities(strip_tags($_POST['mobile'])));
+		$prev_exp = mysqli_real_escape_string($db_server,htmlentities(strip_tags($_POST['prev_exp'])));
+		$skills = mysqli_real_escape_string($db_server,htmlentities(strip_tags($_POST['skills'])));
+		$facebook = in_array("facebook",$_POST['how_know'])?true : false ;
+		$allemny_website = in_array("allemny_website",$_POST['how_know'])?true : false ;
+		$twitter = in_array("twitter",$_POST['how_know'])?true : false ;
+		$friend = in_array("friend",$_POST['how_know'])?true : false ;
+		$other = mysqli_real_escape_string($db_server,htmlentities(strip_tags($_POST['other'])));
+		$join_reason = mysqli_real_escape_string($db_server,htmlentities(strip_tags($_POST['join_reason'])));
+		$suggestion = mysqli_real_escape_string($db_server,htmlentities(strip_tags($_POST['suggestion'])));
+		
+		$qry = mysqli_query($db_server,"INSERT INTO `candidates` (`name`,`faculty`,`department`,`academic_year`,`email`,`mob_number`,`prev_exp`,`skills`,`facebook`,`Allemny_Website`,`twitter`,`friend`,`other`,`join_reason`,`suggest`) VALUES ('$name','$univ','$dept','$year','$email','$mobile','$prev_exp','$skills','$facebook','$allemny_website','$twitter','$friend','$other','$join_reason','$suggestion')");
+		$candidate_id = mysqli_insert_id($db_server);			
 
-			if (isset($_POST['option1']))		
-				$qry = mysqli_query($db_server,"INSERT INTO `applying_for` (`candidate_id`,`option_id`) VALUES ('$candidate_id' , 1)");	
-			if (isset($_POST['option2']))	
-				$qry = mysqli_query($db_server,"INSERT INTO `applying_for` (`candidate_id`,`option_id`) VALUES ('$candidate_id' , 2)");
-			if (isset($_POST['option3']))	
-				$qry = mysqli_query($db_server,"INSERT INTO `applying_for` (`candidate_id`,`option_id`) VALUES ('$candidate_id' , 3)");
-			if (isset($_POST['option4']))	
-				$qry = mysqli_query($db_server,"INSERT INTO `applying_for` (`candidate_id`,`option_id`) VALUES ('$candidate_id' , 4)");
-			if (isset($_POST['option5']))	
-				$qry = mysqli_query($db_server,"INSERT INTO `applying_for` (`candidate_id`,`option_id`) VALUES ('$candidate_id' , 5)");
-			if (isset($_POST['option6']))	
-				$qry = mysqli_query($db_server,"INSERT INTO `applying_for` (`candidate_id`,`option_id`) VALUES ('$candidate_id' , 6)");
-			if (isset($_POST['option7']))	
-				$qry = mysqli_query($db_server,"INSERT INTO `applying_for` (`candidate_id`,`option_id`) VALUES ('$candidate_id' , 7)");
-			if (isset($_POST['option8']))	
-				$qry = mysqli_query($db_server,"INSERT INTO `applying_for` (`candidate_id`,`option_id`) VALUES ('$candidate_id' , 8)");
-			if (isset($_POST['option9']))	
-				$qry = mysqli_query($db_server,"INSERT INTO `applying_for` (`candidate_id`,`option_id`) VALUES ('$candidate_id' , 9)");
-			if (isset($_POST['option10']))	
-				$qry = mysqli_query($db_server,"INSERT INTO `applying_for` (`candidate_id`,`option_id`) VALUES ('$candidate_id' , 10)");
-
-			mysqli_close($db_server);
-			echo json_encode(array(
-		    'status' => 'success' ));		    
-	}
+		// Inser into applying_for table (committees that candidates applied for)
+		$committees = $_POST["committee"];
+		// integer value of the committee name which is the id number in the database.
+		$intVal = 0;
+		foreach($committees as $value)
+	     {
+	     	$intVal = intval($value);
+	     	$qry = mysqli_query($db_server,"INSERT INTO `applying_for` (`candidate_id`,`option_id`) VALUES ('$candidate_id' ,'$intVal')");	
+		 }
+	
+		mysqli_close($db_server);
+		echo json_encode(array(
+	    'status' => 'success' ));		    	
 	}
 
 }

@@ -74,46 +74,57 @@
 				<label class="control-label">Mobile Number</label>
 				<div class="controls">
 					<div class="input-prepend">
-						<input type="text" class="span4" id="mobile" name="mobile" placeholder="" required>
-					</div>
+						<input type="number" class="span4" id="mobile" name="mobile" required minlength = "10" data-validation-number-message = "Please Enter your mobile number">
+					</div>10
 				</div>
 			</div>
-			
-				<div class="control-group">
-				<label class="control-label" for="prev_exp">Applying for</label>  
-				    <div class="controls ">
-				        <label class="checkbox">
-				            <input type="checkbox" name="option1" id="inlineCheckbox1"> PR and FR committee.
-				        </label>
-				        <label class="checkbox">
-				            <input type="checkbox" name="option2" id="inlineCheckbox2"> Marketing Committee.
-				        </label>
-				        <label class="checkbox">
-				            <input type="checkbox" name="option3" id="inlineCheckbox3"> R&D Committee.
-				        </label>
-				        <label class="checkbox">
-				            <input type="checkbox" name="option4" id="inlineCheckbox3"> Graphics Committee, "Video Editing".
-				        </label>
-						<label class="checkbox">
-				            <input type="checkbox" name="option5" id="inlineCheckbox3"> Graphics Committee, "Design".
-				        </label>
-						<label class="checkbox">
-				            <input type="checkbox" name="option6" id="inlineCheckbox2"> Graphics Committee, "Videography and Photography".
-				        </label>
-						<label class="checkbox">
-				            <input type="checkbox" name="option7" id="inlineCheckbox2"> HR Committee.
-				        </label>
-				        <label class="checkbox">
-				            <input type="checkbox" name="option8" id="inlineCheckbox2"> Academic Committee.
-				        </label>
-				        <label class="checkbox">
-				            <input type="checkbox" name="option9" id="inlineCheckbox2"> Web Committee, "Developers and Designers".
-				        </label>
-				        <label class="checkbox">
-				            <input type="checkbox" name="option10" id="inlineCheckbox2"> Web Committee, "Editors".
-				        </label>
-				    </div>
-				</div>
+			<div class="control-group">
+                <label class="control-label">Applying for</label>
+                <div class="controls">
+                    <label class="checkbox">
+                        <input type="checkbox" name="committee[]" value="1" data-validation-minchecked-minchecked="1" data-validation-minchecked-message="Please Select a Committee">
+                        PR and FR committee.
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" name="committee[]" value="2">
+                        Marketing Committee.
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" name="committee[]" value="3">
+                        R&D Committee.
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" name="committee[]" value="4">
+                        Graphics Committee, "Video Editing".
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" name="committee[]" value="5">
+                        Graphics Committee, "Design".
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" name="committee[]" value="6">
+                        Graphics Committee, "Videography and Photography".
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" name="committee[]" value="7">
+                        HR Committee.
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" name="committee[]" value="8">
+                        Academic Committee.
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" name="committee[]" value="9">
+                        Web Committee, "Developers and Designers".
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" name="committee[]" value="10">
+                        Web Committee, "Editors".
+                    </label>
+                    <p class="help-block"></p>
+                </div>
+            </div>
+				
 			
 			<div class="control-group">  
                 <label class="control-label" for="prev_exp" >State your previous volunteering experience ?</label>
@@ -127,25 +138,27 @@
                 <div class="controls">  
                     <textarea name="skills" id="skills" rows="8" class="span5" placeholder="" required></textarea>  
                 </div>  
-            </div>
-			
+            </div>	      
+
+
 			<div class="control-group">
 				<label class="control-label" for="prev_exp">How did you know about Allemny? </label>  
 				    <div class="controls ">
 				        <label class="checkbox">
-				            <input type="checkbox" name="op1_how_know" id="inlineCheckbox1"> Facebook.
+				            <input type="checkbox" name="how_know[]" value = "facebook" data-validation-minchecked-minchecked="1" data-validation-minchecked-message="Please Select How did you know about Allemny"> 
+				            Facebook.
 				        </label>
 				        <label class="checkbox">
-				            <input type="checkbox" name="op2_how_know" id="inlineCheckbox2"> Allemny Website.
+				            <input type="checkbox" name="how_know[]" value = "allemny_website"> Allemny Website.
 				        </label>				        
 						<label class="checkbox">
-				            <input type="checkbox" name="op3_how_know" id="inlineCheckbox2"> Twitter.
+				            <input type="checkbox" name="how_know[]" value = "twitter"> Twitter.
 				        </label>
 				        <label class="checkbox">
-				            <input type="checkbox" name="op4_how_know" id="inlineCheckbox2"> Friend.
+				            <input type="checkbox" name="how_know[]" value = "friend"> Friend.
 				        </label>
 				        <label class="checkbox">
-				            <input type="checkbox" name="op5_how_know" id="inlineCheckbox2"> Other.
+				            <input type="checkbox" name="how_know[]" value = "other"> Other.
 				        </label>				        
 				    </div>
 				</div>
@@ -174,7 +187,7 @@
             </div>
 
             	<img class = "controls" src="captcha/captcha.php"> Write these numbers <br>
-            	<input class = "controls" type="text" name="vercode" /> 
+            	<input class = "controls" type="text" name="vercode" required/> 
 
             <div class="form-actions"> 
                 <input type="hidden" name="send" value="contact">
