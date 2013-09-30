@@ -76,7 +76,7 @@ include 'includes/overall/overallheader.php';?>
 					<img class="media-object" src="img/courses/ADI.png">
 				</a>
 				<div class="media-body">
-					<h3 class="media-heading">Autodesk Inventor</h3>
+					<a style="text-decoration: none;" href="player?id=<?php echo '6&vid=1';?>"><h3 class="media-heading">Autodesk Inventor</h3></a>
 					<p>A Full course on Autodesk Inventor software, focusing on all available options you can use like:</p><p>
 					<ul>
 						<li>Sketch environment</li>
@@ -101,7 +101,7 @@ include 'includes/overall/overallheader.php';?>
 					<img class="media-object" src="img/courses/matlab.png">
 				</a>
 				<div class="media-body">
-					<h3 class="media-heading">Matlab basics</h3>
+					<a style="text-decoration: none;" href="player?id=<?php echo '5&vid=1';?>"><h3 class="media-heading">Matlab Basics</h3></a>
 					<p>An introductory course on MATLAB, in whch you can study</p>
 					<ul>
 						<li>Matrices operations and functions</li>
@@ -123,7 +123,7 @@ include 'includes/overall/overallheader.php';?>
 					<img class="media-object" src="img/courses/pcb_design.png">
 				</a>
 				<div class="media-body">
-					<h3 class="media-heading">PCB Design</h3>
+					<a style="text-decoration: none;" href="player?id=<?php echo '1&vid=1';?>"><h3 class="media-heading">PCB Design</h3></a>
 					<p>This course will give you an excellent knowlage about PCBs, you will know how to deal with:</p>
 					<ul>
 						<li>Arranging and wiring of Electronic Components</li>
@@ -143,7 +143,7 @@ include 'includes/overall/overallheader.php';?>
 					<img class="media-object" src="img/courses/physics.png">
 				</a>
 				<div class="media-body">
-					<h3 class="media-heading">Physics 1</h3>
+					<a style="text-decoration: none;" href="player?id=<?php echo '4&vid=1';?>"><h3 class="media-heading">Physics 1</h3></a>
 					<p>Learn Fundamental physics pricipales like:</p>
 					<ul>
 						<li>MThermodynamics</li>
@@ -161,7 +161,7 @@ include 'includes/overall/overallheader.php';?>
 					<img class="media-object" src="img/courses/geometry.png">
 				</a>
 				<div class="media-body">
-					<h3 class="media-heading">Descriptive Geometry</h3>
+					<a style="text-decoration: none;" href="player?id=<?php echo '2&vid=1';?>"><h3 class="media-heading">Descriptive Geometry</h3></a>
 					<p>Learn The basics of Descriptive Geometry</p>
 				</div>
 			</div>
