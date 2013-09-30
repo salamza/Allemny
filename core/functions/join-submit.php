@@ -32,7 +32,16 @@ if (empty($_POST) === false)
 		$allemny_website = in_array("allemny_website",$_POST['how_know'])?true : false ;
 		$twitter = in_array("twitter",$_POST['how_know'])?true : false ;
 		$friend = in_array("friend",$_POST['how_know'])?true : false ;
+		$other_check = in_array("other_check",$_POST['how_know'])?true : false ;		
 		$other = mysqli_real_escape_string($db_server,htmlentities(strip_tags($_POST['other'])));
+		if ($other_check and $other == "")
+		{
+			echo json_encode(array(
+			    'status' => 'error',
+			    'message'=> 'Please mention How did you know about Allemny.' ));
+			exit();
+		}
+
 		$join_reason = mysqli_real_escape_string($db_server,htmlentities(strip_tags($_POST['join_reason'])));
 		$suggestion = mysqli_real_escape_string($db_server,htmlentities(strip_tags($_POST['suggestion'])));
 		
@@ -55,7 +64,4 @@ if (empty($_POST) === false)
 	}
 
 }
-
-
-
 ?>

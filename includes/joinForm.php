@@ -160,6 +160,7 @@
 				            <input type="checkbox" name="how_know[]" value = "friend"> Friend.
 				        </label>
 				        <label class="checkbox">
+				            <input type="checkbox" name="how_know[]" value = "other_check"> Other.
 				            <input type="checkbox" id="otherCheckBox" name="how_know[]" value = "other" onchange="changetextbox();"> Other.
 				        </label>				        
 				    </div>
